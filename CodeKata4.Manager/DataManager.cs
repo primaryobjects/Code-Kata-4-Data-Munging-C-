@@ -9,11 +9,11 @@ namespace CodeKata4.Manager
     public static class DataManager
     {
         /// <summary>
-        /// Given a list of Weather with min and max temperatures, find the Weather with
-        /// the smallest difference between min and max.
+        /// Given a list of BaseDataType with min and max values, find the BaseDataType with
+        /// the smallest difference between Value1 and Value2.
         /// </summary>
-        /// <param name="weatherList">List of Weather</param>
-        /// <returns>Weather</returns>
+        /// <param name="weatherList">List of BaseDataType</param>
+        /// <returns>BaseDataType</returns>
         public static T CalculateSmallestSpread<T>(List<T> dataList) where T : BaseDataType
         {
             BaseDataType smallestSpreadData = null;

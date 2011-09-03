@@ -10,7 +10,7 @@ namespace CodeKata4.Types
         public string Name { get; set; }
         public int Value1 { get; set; }
         public int Value2 { get; set; }
-        
+
         public BaseDataType(string name, int maxValue, int minValue)
         {
             Name = name;
