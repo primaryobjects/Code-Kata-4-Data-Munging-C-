@@ -5,27 +5,15 @@ using System.Text;
 
 namespace CodeKata4.Types
 {
-    public class Weather
+    public class Weather : BaseDataType
     {
-        public int Day { get; set; }
-        public int MaxTemperature { get; set; }
-        public int MinTemperature { get; set; }
-
-        public Weather(int day, int maxTemperature, int minTemperature)
-        {
-            Day = day;
-            MaxTemperature = maxTemperature;
-            MinTemperature = minTemperature;
-        }
+        public int Day { get { return Int32.Parse(Name); } set { Name = value.ToString(); } }
+        public int MaxTemperature { get { return Value2; } set { Value2 = value; } }
+        public int MinTemperature { get { return Value1; } set { Value1 = value; } }
 
         public Weather(string day, string maxTemperature, string minTemperature)
-            : this(Int32.Parse(day), Int32.Parse(maxTemperature), Int32.Parse(minTemperature))
+            : base(day, Int32.Parse(maxTemperature), Int32.Parse(minTemperature))
         {
-        }
-
-        public override string ToString()
-        {
-            return "Day: " + Day + ", Max: " + MaxTemperature + ", Min: " + MinTemperature;
         }
     }
 }

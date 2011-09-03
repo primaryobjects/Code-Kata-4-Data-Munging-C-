@@ -12,10 +12,13 @@ namespace CodeKata4
     {
         static void Main(string[] args)
         {
-            List<Weather> weatherList = Parser.Parse(@"C:\users\nada\desktop\weather.dat");
-            Weather weather = WeatherManager.CalculateSmallestSpread(weatherList);
-
+            List<Weather> weatherList = Parser.ParseWeather(@"C:\users\nada\desktop\weather.dat");
+            Weather weather = DataManager.CalculateSmallestSpread(weatherList);
             Console.WriteLine(weather.ToString());
+
+            List<Football> footballList = Parser.ParseFootball(@"C:\users\nada\desktop\football.dat");
+            Football football = DataManager.CalculateSmallestSpread(footballList);
+            Console.WriteLine(football.ToString());
 
             Console.ReadKey();
         }

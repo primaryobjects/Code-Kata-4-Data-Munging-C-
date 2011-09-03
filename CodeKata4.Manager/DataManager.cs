@@ -6,7 +6,7 @@ using CodeKata4.Types;
 
 namespace CodeKata4.Manager
 {
-    public static class WeatherManager
+    public static class DataManager
     {
         /// <summary>
         /// Given a list of Weather with min and max temperatures, find the Weather with
@@ -14,21 +14,21 @@ namespace CodeKata4.Manager
         /// </summary>
         /// <param name="weatherList">List of Weather</param>
         /// <returns>Weather</returns>
-        public static Weather CalculateSmallestSpread(List<Weather> weatherList)
+        public static T CalculateSmallestSpread<T>(List<T> dataList) where T : BaseDataType
         {
-            Weather smallestSpreadWeather = null;
+            BaseDataType smallestSpreadData = null;
 
-            foreach (Weather weather in weatherList)
+            foreach (BaseDataType data in dataList)
             {
-                if (smallestSpreadWeather == null ||
-                   ((weather.MaxTemperature - weather.MinTemperature) < (smallestSpreadWeather.MaxTemperature - smallestSpreadWeather.MinTemperature)))
+                if (smallestSpreadData == null ||
+                   (Math.Abs(data.Value2 - data.Value1) < Math.Abs(smallestSpreadData.Value2 - smallestSpreadData.Value1)))
                 {
                     // New smallest spread.
-                    smallestSpreadWeather = weather;
+                    smallestSpreadData = data;
                 }
             }
 
-            return smallestSpreadWeather;
+            return (T)smallestSpreadData;
         }
     }
 }

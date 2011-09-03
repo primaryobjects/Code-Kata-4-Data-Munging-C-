@@ -10,7 +10,7 @@ namespace CodeKata4.DataParser
 {
     public static class Parser
     {
-        public static List<Weather> Parse(string path)
+        public static List<Weather> ParseWeather(string path)
         {
             List<Weather> weatherList = new List<Weather>();
 
@@ -29,6 +29,27 @@ namespace CodeKata4.DataParser
             }
 
             return weatherList;
+        }
+
+        public static List<Football> ParseFootball(string path)
+        {
+            List<Football> footballList = new List<Football>();
+
+            string text = File.ReadAllText(path);
+
+            Regex regEx = new Regex(@".*\. (\w+) +\d+ +\d+ +\d+ +\d+ +(\d+) +- +(\d+)", RegexOptions.IgnoreCase);
+            MatchCollection matches = regEx.Matches(text);
+
+            foreach (Match match in matches)
+            {
+                if (match.Groups.Count >= 3)
+                {
+                    Football football = new Football(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                    footballList.Add(football);
+                }
+            }
+
+            return footballList;
         }
     }
 }
