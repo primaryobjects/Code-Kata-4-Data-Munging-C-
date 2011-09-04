@@ -17,6 +17,11 @@ namespace CodeKata4.Types
                 return Math.Abs(Value1 - Value2);
             }
         }
+        public abstract string RegularExpression { get; }
+
+        public BaseValueCompareType()
+        {
+        }
 
         public BaseValueCompareType(string name, int value1, int value2)
         {

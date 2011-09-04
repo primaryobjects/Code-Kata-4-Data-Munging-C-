@@ -17,7 +17,7 @@ namespace CodeKata4.DataParser
         /// <param name="path">Path name</param>
         /// <param name="construct">Constructor expression</param>
         /// <returns>List of Type</returns>
-        public static List<T> Parse<T>(string path, Func<string, string, string, T> construct) where T : BaseValueCompareType
+        public static List<T> Parse<T>(string path, Func<string, string, string, T> construct) where T : BaseValueCompareType, new()
         {
             List<T> dataList = new List<T>();
 
@@ -25,7 +25,7 @@ namespace CodeKata4.DataParser
             string text = File.ReadAllText(path);
 
             // Match on the regular expression.
-            Regex regEx = new Regex(GetPattern(typeof(T)), RegexOptions.IgnoreCase);
+            Regex regEx = new Regex(new T().RegularExpression, RegexOptions.IgnoreCase);
             MatchCollection matches = regEx.Matches(text);
 
             foreach (Match match in matches)
@@ -39,25 +39,6 @@ namespace CodeKata4.DataParser
             }
 
             return dataList;
-        }
-
-        /// <summary>
-        /// Returns a regular expression to parse a given type.
-        /// </summary>
-        /// <param name="type">Type</param>
-        /// <returns>string</returns>
-        private static string GetPattern(Type type)
-        {
-            string pattern = "";
-
-            switch (type.Name)
-            {
-                case "Weather": pattern = @".*  (\d{1,2})  (\d{1,3}) +(\d{1,3})"; break;
-                case "Football": pattern = @".*\. (\w+) +\d+ +\d+ +\d+ +\d+ +(\d+) +- +(\d+)"; break;
-                default: throw new Exception("Unknown type to parse: " + type.Name);
-            }
-
-            return pattern;
         }
     }
 }
