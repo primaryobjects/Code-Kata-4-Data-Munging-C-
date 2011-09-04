@@ -21,7 +21,7 @@ namespace CodeKata4
             Console.ReadKey();
         }
 
-        private static void Driver<T>(List<T> list) where T : BaseDataType
+        private static void Driver<T>(List<T> list) where T : BaseValueCompareType
         {
             T data = DataManager.CalculateSmallestSpread(list);
             Console.WriteLine(data.ToString());

@@ -17,7 +17,7 @@ namespace CodeKata4.DataParser
         /// <param name="path">Path name</param>
         /// <param name="construct">Constructor expression</param>
         /// <returns>List of Type</returns>
-        public static List<T> Parse<T>(string path, Func<string, string, string, T> construct) where T : BaseDataType
+        public static List<T> Parse<T>(string path, Func<string, string, string, T> construct) where T : BaseValueCompareType
         {
             List<T> dataList = new List<T>();
 

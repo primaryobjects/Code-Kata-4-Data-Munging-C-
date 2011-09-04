@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CodeKata4.Types
 {
-    public class Football : BaseDataType
+    public class Football : BaseValueCompareType
     {
         public int ScoresFor { get { return Value1; } set { Value1 = value; } }
         public int ScoresAgainst { get { return Value2; } set { Value2 = value; } }

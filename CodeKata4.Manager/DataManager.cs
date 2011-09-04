@@ -14,21 +14,11 @@ namespace CodeKata4.Manager
         /// </summary>
         /// <param name="weatherList">List of BaseDataType</param>
         /// <returns>BaseDataType</returns>
-        public static T CalculateSmallestSpread<T>(List<T> dataList) where T : BaseDataType
+        public static T CalculateSmallestSpread<T>(List<T> dataList) where T : BaseValueCompareType
         {
-            BaseDataType smallestSpreadData = null;
+            var sortedList = dataList.OrderBy(x => x.ValueDifference).ToList();
 
-            foreach (BaseDataType data in dataList)
-            {
-                if (smallestSpreadData == null ||
-                   (Math.Abs(data.Value2 - data.Value1) < Math.Abs(smallestSpreadData.Value2 - smallestSpreadData.Value1)))
-                {
-                    // New smallest spread.
-                    smallestSpreadData = data;
-                }
-            }
-
-            return (T)smallestSpreadData;
+            return sortedList.First();
         }
     }
 }
