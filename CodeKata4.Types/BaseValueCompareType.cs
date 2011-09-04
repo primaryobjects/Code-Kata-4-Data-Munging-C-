@@ -18,21 +18,21 @@ namespace CodeKata4.Types
             }
         }
 
-        public BaseValueCompareType(string name, int maxValue, int minValue)
+        public BaseValueCompareType(string name, int value1, int value2)
         {
             Name = name;
-            Value2 = maxValue;
-            Value1 = minValue;
+            Value1 = value1;
+            Value2 = value2;
         }
 
-        public BaseValueCompareType(string name, string maxValue, string minValue)
-            : this(name, Int32.Parse(maxValue), Int32.Parse(minValue))
+        public BaseValueCompareType(string name, string value1, string value2)
+            : this(name, Int32.Parse(value1), Int32.Parse(value2))
         {
         }
 
         public override string ToString()
         {
-            return "Name: " + Name + ", Max: " + Value2 + ", Min: " + Value1 + ", Dif: " + ValueDifference;
+            return "Name: " + Name + ", Value 1: " + Value1 + ", Value 2: " + Value2 + ", Diff: " + ValueDifference;
         }
     }
 }

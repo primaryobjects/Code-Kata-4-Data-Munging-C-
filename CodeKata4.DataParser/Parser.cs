@@ -21,8 +21,10 @@ namespace CodeKata4.DataParser
         {
             List<T> dataList = new List<T>();
 
+            // Read contents of text file.
             string text = File.ReadAllText(path);
 
+            // Match on the regular expression.
             Regex regEx = new Regex(GetPattern(typeof(T)), RegexOptions.IgnoreCase);
             MatchCollection matches = regEx.Matches(text);
 
@@ -30,6 +32,7 @@ namespace CodeKata4.DataParser
             {
                 if (match.Groups.Count >= 3)
                 {
+                    // Populate data type.
                     T data = construct(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
                     dataList.Add(data);
                 }

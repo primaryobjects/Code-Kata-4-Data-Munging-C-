@@ -10,13 +10,8 @@ namespace CodeKata4.Types
         public int ScoresFor { get { return Value1; } set { Value1 = value; } }
         public int ScoresAgainst { get { return Value2; } set { Value2 = value; } }
 
-        public Football(string name, int maxValue, int minValue)
-            : base(name, maxValue, minValue)
-        {
-        }
-
-        public Football(string name, string maxValue, string minValue)
-            : base(name, Int32.Parse(maxValue), Int32.Parse(minValue))
+        public Football(string name, string scoresFor, string scoresAgainst)
+            : base(name, Int32.Parse(scoresFor), Int32.Parse(scoresAgainst))
         {
         }
     }
