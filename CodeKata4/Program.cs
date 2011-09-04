@@ -12,10 +12,10 @@ namespace CodeKata4
     {
         static void Main(string[] args)
         {
-            List<Weather> weatherList = Parser.Parse(@"C:\users\nada\desktop\weather.dat", (a,b,c) => new Weather(a, b, c));
+            List<Weather> weatherList = Parser.Parse("../../../weather.dat", (a,b,c) => new Weather(a, b, c));
             Driver(weatherList);
 
-            List<Football> footballList = Parser.Parse(@"C:\users\nada\desktop\football.dat", (a, b, c) => new Football(a, b, c));
+            List<Football> footballList = Parser.Parse("../../../football.dat", (a, b, c) => new Football(a, b, c));
             Driver(footballList);
 
             Console.ReadKey();
